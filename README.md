@@ -9,7 +9,15 @@
 
 ## Language
 
-* JAVA
+* JAVA (J2EE, Android)
 * Node, Javascript, Typescript
 * C#, ASP.NET
 * Visual Basic
+
+## Database
+
+* Oracle
+* MS-SQL
+* PostgreSQL
+* MY-SQL
+* HBase
