@@ -16,13 +16,12 @@
 
 ## Database
 
-* Oracle
-* MS-SQL
-* PostgreSQL
-* MY-SQL
-* HBase
+* Oracle, MS-SQL
+* PostgreSQL, MY-SQL
+* HBase, Hadoop
 
-## ...
+
+## .
 
 * Facebook : http://www.facebook.com/cho.eunsang
 * Blog : http://itnp.kr/
