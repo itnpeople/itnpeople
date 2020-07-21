@@ -21,3 +21,8 @@
 * PostgreSQL
 * MY-SQL
 * HBase
+
+## ...
+
+* Facebook : http://www.facebook.com/cho.eunsang
+* Blog : http://itnp.kr/
