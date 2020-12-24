@@ -11,6 +11,7 @@
 
 * JAVA (J2EE, Android)
 * Node, Javascript, Typescript
+* go-lang
 * C#, ASP.NET
 * Visual Basic
 
