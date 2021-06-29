@@ -1,0 +1,7 @@
+name: httpbin
+home: https://github.com/itnpeople/k8s.docs
+version: devel
+description: httpbin.org implemented in Go, running on Kubernetes
+maintainers:
+  - name: escho
+    email: itnpeople@naver.com

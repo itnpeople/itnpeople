@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  acornsoft-dashboard:
+  - apiVersion: v2
+    appVersion: v0.1.2
+    created: "2021-02-02T13:22:10.31807+09:00"
+    description: Acornsoft Kubernetes Dashboard
+    digest: 3205f6217826ba691c6f040ab23809cb0a3047ab6f5295bea2100d874b82e519
+    name: acornsoft-dashboard
+    type: application
+    urls:
+    - acornsoft-dashboard-0.1.2.tgz
+    version: 0.1.2
+  httpbin:
+  - apiVersion: v1
+    created: "2021-02-02T13:22:10.318925+09:00"
+    description: httpbin.org implemented in Go, running on Kubernetes
+    digest: 3041ee165e2b3fe7062bd2433791c34c8618ab03cf9909a36d3119e8a6e842e2
+    home: https://github.com/itnpeople/k8s.docs
+    maintainers:
+    - email: itnpeople@naver.com
+      name: escho
+    name: httpbin
+    urls:
+    - httpbin-devel.tgz
+    version: devel
+generated: "2021-02-02T13:22:10.316339+09:00"

@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: httpbin
+  namespace: {{.Values.namespace}}
+  labels:
+    app: httpbin
+spec:
+  replicas: {{.Values.numReplicas}}
+  selector:
+    matchLabels:
+      app: httpbin
+  template:
+    metadata:
+      labels:
+        app: httpbin
+    spec:
+      containers:
+        - name: httpbin
+          image: docker.io/honester/httpbin:latest
+          imagePullPolicy: {{.Values.dockerPullPolicy}}
+          ports:
+            - containerPort: {{.Values.containerPort}}
+              name: http
+          env:
+            - name: "PORT"
+              value: "{{.Values.containerPort}}"          

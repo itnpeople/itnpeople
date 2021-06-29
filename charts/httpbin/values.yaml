@@ -1,0 +1,4 @@
+containerPort: 80
+namespace: default
+numReplicas: 1
+dockerPullPolicy: IfNotPresent
