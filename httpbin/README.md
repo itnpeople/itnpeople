@@ -10,7 +10,7 @@
 ▒ docker push honester/httpbin:latest
 ~~~
 
-## 배표
+## 실행
 
 ### Docker
 
@@ -110,6 +110,33 @@ spec:
       port: 80
 ~~~
 
+* deployment
+
+```
+▒ kubectl apply -f - <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  labels:
+    app: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin
+  template:
+    metadata:
+      labels:
+        app: httpbin
+    spec:
+      containers:
+      - name: httpbin
+        image: docker.io/honester/httpbin:latest
+        ports:
+        - containerPort: 80
+EOF
+```
 ## Usage - kubectl
 
 * curl
