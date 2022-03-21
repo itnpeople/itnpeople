@@ -41,3 +41,98 @@ $ kubectl port-forward -n weave service/weave-scope-app 4040:80
 $ kubectl create ns guestbook
 $ kubectl apply -n guestbook -f https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml
 ```
+
+## locust
+> https://locust.io/
+
+
+* Deploy the target application "podinfo"
+```
+$ kubectl apply -f - <<EOF
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: podinfo 
+spec: 
+  selector: 
+    matchLabels: 
+      app: podinfo 
+  template: 
+    metadata: 
+      labels: 
+        app: podinfo 
+    spec: 
+      containers: 
+      - name: podinfo 
+        image: stefanprodan/podinfo 
+        ports: 
+        - containerPort: 9898 
+--- 
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: podinfo 
+spec: 
+  ports: 
+    - port: 80 
+      targetPort: 9898 
+  selector: 
+    app: podinfo 
+EOF
+```
+
+
+* Deploy "locust"
+
+```
+$ kubectl apply -f - <<EOF
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: locust-script 
+data: 
+  locustfile.py: |- 
+    from locust import HttpUser, task, between 
+
+    class QuickstartUser(HttpUser): 
+        wait_time = between(0.7, 1.3) 
+
+        @task 
+        def hello_world(self): 
+            self.client.get("/", headers={"Host": "example.com"})
+--- 
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: locust 
+spec: 
+  selector: 
+    matchLabels: 
+      app: locust 
+  template: 
+    metadata: 
+      labels: 
+        app: locust 
+    spec: 
+      containers: 
+        - name: locust 
+          image: locustio/locust 
+          ports: 
+            - containerPort: 8089 
+          volumeMounts: 
+            - mountPath: /home/locust 
+              name: locust-script 
+      volumes: 
+        - name: locust-script 
+          configMap: 
+            name: locust-script 
+EOF
+```
+
+* Open in your browser `http://localhost:8089` 
+* Enter `http://podinfo` in the **Host** parameter value.
+
+```
+$ kubectl port-forward deploy/locust 8089:8089
+```
+
